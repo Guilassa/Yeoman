@@ -150,8 +150,21 @@ ul, ol {  /* para borrar puntos en lista*/
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
 
 
- 
 
+
+.cuadroC{
+
+     background-image: url("../images/fondoLogin.jpg");
+     height: 500px;
+
+
+
+
+}
+
+
+ 
+/*
 form {
     border: 3px solid #f1f1f1;
 }
@@ -220,7 +233,7 @@ span.psw {
     }
 }
 
-
+*/
 
 
 
