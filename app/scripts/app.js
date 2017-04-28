@@ -2,14 +2,14 @@
 
 /**
  * @ngdoc overview
- * @name helloWorldApp
+ * @name holaApp
  * @description
- * # helloWorldApp
+ * # holaApp
  *
  * Main module of the application.
  */
 angular
-  .module('helloWorldApp', [
+  .module('holaApp', [
     'ngAnimate',
     'ngAria',
     'ngCookies',

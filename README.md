@@ -1,10 +1,7 @@
-# hello-world
+# hola
 
 This project is generated with [yo angular generator](https://github.com/yeoman/generator-angular)
 version 0.16.0.
-
-Saltaba un error por no tener instalado el karma-generator
-[npm install -g yo generator-angular generator-karma]
 
 ## Build & development
 
