@@ -25,7 +25,7 @@
 
 
 
-<body      ng-app="holaApp">
+<body ng-app="holaApp">
 
 
 
@@ -56,7 +56,7 @@
           </ul>
         </li>
 
-        <li class="login"><a  ng-href="../fullscreen-login/login.html" >Login</a>
+        <li class="login"><a  ng-href="/fullscreen-login/login.html" >Login</a>
           <!-- <ul>
             <li><a  ng-href="" >
 
@@ -147,22 +147,49 @@
 
       </ul>
 
+</div>   <!--acaba cabecera-->
+
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<div ng-controller="cntrl">
+<table>
+	<thead>
+		<tr>
+			<th>Nombre</th>
+			<th>Apellido 1</th>
+            <th>Nombre</th>
+			<th>Apellido 1</th>
+			<th>Nombre</th>
+			<th>Apellido 1</th>
+		</tr>	
+	</thead>
+	<tbody>
+		<tr ng-repeat="usuario in names">
+				<td >{{usuario.Nombre}}</td>
+   				<td >{{usuario.Apellido1}}</td>
+				<td >{{usuario.Nombre}}</td>
+				<td >{{usuario.Apellido1}}</td>
+				<td >{{usuario.Nombre}}</td>
+				<td >{{usuario.Apellido1}}</td>
+
+		</tr>
+	</tbody>
+</table>
+</div>
+<script>
+var app=angular.module('holaApp',[]);
+app.controller('cntrl', function($scope,$http){
+
+		$http.get("php/customers_mysql.php").then(function (response) 
+		{
+			$scope.names = response.data.records;
+		})
+
+});
 
 
-
-
-
-    </div>   <!--acaba cabecera-->
-
-              
- 
-
-
+</script>
 <div class="parallax"></div>           <!-- donde haya esto se añade un paralax -->
 
-<div  ng-view="" >                      <!--  vista creada en main.html -->
-
-</div>
 
 <div class="parallax"></div>
 
@@ -203,7 +230,32 @@
         <script src="scripts/controllers/main.js"></script>
         <script src="scripts/controllers/about.js"></script>
         <!-- endbuild -->
-
+        
+    <!-- loginPage:js({.tmp,app}) fullscreen-login -->
+    <script src="fullscreen-login/login.html"></script>
+    <script src="fullscreen-login/assets/css/reset.css"></script>
+    <script src="fullscreen-login/assets/css/style.css"></script>
+    <script src="fullscreen-login/assets/css/supersized.css"></script>
+    <script src="fullscreen-login/assets/img/backgrounds/1.jpg"></script>
+    <script src="fullscreen-login/assets/img/backgrounds/2.jpg"></script>
+    <script src="fullscreen-login/assets/img/backgrounds/3.jpg"></script>
+    <script src="fullscreen-login/assets/img/facebook.png"></script>
+    <script src="fullscreen-login/assets/img/progress.gif"></script>
+    <script src="fullscreen-login/assets/img/twitter.png"></script>
+    <script src="fullscreen-login/assets/js/jquery-1.8.2.min.js"></script>
+    <script src="fullscreen-login/assets/js/scripts.js"></script>
+    <script src="fullscreen-login/assets/js/supersized-init.js"></script>
+    <script src="fullscreen-login/assets/js/supersized.3.2.7.min.js"></script>
+    <!-- endbuild -->
+    
+	<!-- Connector:php({.tmp,app}) php -->
+	<script src="php/customers_mysql.php"></script>
+	<!-- endbuild -->
+	
+	<!-- Parallax:html({.tmp,app}) html -->
+	<script src="views/main.html"></script>
+	<script src="views/about.html"></script>
+	<!-- endbuild -->
 
 </body>
 </html>
