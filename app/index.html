@@ -2,9 +2,7 @@
 <html>
 <head>
 
-
-
-   <meta charset="utf-8">
+  	<meta charset="utf-8">
     <title>Pagina inicio</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
@@ -15,14 +13,10 @@
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
-    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/main.css" />
     <!-- endbuild -->
 
-
-
-
 </head>
-
 
 
 <body ng-app="holaApp">
@@ -56,7 +50,7 @@
           </ul>
         </li>
 
-        <li class="login"><a  ng-href="/fullscreen-login/login.html" >Login</a>
+        <li class="login"><a  ng-href="../login.html" >Login</a>
           <!-- <ul>
             <li><a  ng-href="" >
 
@@ -149,53 +143,80 @@
 
 </div>   <!--acaba cabecera-->
 
-<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
-<div ng-controller="cntrl">
-<table>
-	<thead>
-		<tr>
-			<th>Nombre</th>
-			<th>Apellido 1</th>
-            <th>Nombre</th>
-			<th>Apellido 1</th>
-			<th>Nombre</th>
-			<th>Apellido 1</th>
-		</tr>	
-	</thead>
-	<tbody>
-		<tr ng-repeat="usuario in names">
-				<td >{{usuario.Nombre}}</td>
-   				<td >{{usuario.Apellido1}}</td>
-				<td >{{usuario.Nombre}}</td>
-				<td >{{usuario.Apellido1}}</td>
-				<td >{{usuario.Nombre}}</td>
-				<td >{{usuario.Apellido1}}</td>
-
-		</tr>
-	</tbody>
-</table>
+<div class="parallax"></div>           <!-- donde haya esto se añade un paralax -->
+<div class ="administrativos"></div>
+	
+<div class="tablero" ng-controller="cntrl" style="background-image: url(images/EmployeeBack1.jpeg)">
+	<h1 align="center">Administrativos</h1>
+	<div class="row">
+	  <div class="column" ng-repeat="usuario in names | orderBy : 'Nombre' | filter : 'Administrativo'">
+		<div class="card" style="background-color:rgba(255,255,255,0.78);color:#4E4E4E">
+		  <img src="images/img_avatar2.png" alt="{{usuario.Nombre}}" style="width:100%">
+		  <div class="container">
+			<h3>{{usuario.Nombre}} {{usuario.Apellido1}} {{usuario.Apellido2}}</h3>
+			<br>
+			<p class="title">{{usuario.Categoria}}</p>
+			<br>
+			<!--<p>Some text that describes me lorem ipsum ipsum lorem.</p>-->
+			<p>{{usuario.email}}</p>
+			<br>
+			<p><button class="button">Contact</button></p>
+		  </div>
+		</div>
+	  </div>
+	</div> 
 </div>
 <script>
 var app=angular.module('holaApp',[]);
 app.controller('cntrl', function($scope,$http){
 
-		$http.get("php/customers_mysql.php").then(function (response) 
-		{
-			$scope.names = response.data.records;
-		})
+	$http.get("php/customers_mysql.php").then(function (response) 
+	{
+		$scope.names = response.data.records;
+	})
+
+});
+
+</script>
+
+<div class="empleados"></div>
+
+<script src="../bower_components/angular/angular.min.js"></script>
+<div class="tablero" ng-controller="cntrl" style="background-image: url(images/EmployeeBack2.jpg)">
+	<h1 align="center">Empleados</h1>
+	<div class="row">
+	  <div class="column" ng-repeat="usuario in names | orderBy : 'Nombre' | filter : {Categoria:'!Administrativo'}">
+		<div class="card" style="background-color:rgba(255,255,255,0.78);color:#4E4E4E">
+		  <img src="images/img_avatar2.png" alt="{{usuario.Nombre}}" style="width:100%">
+		  <div class="container">
+			<h3>{{usuario.Nombre}} {{usuario.Apellido1}} {{usuario.Apellido2}}</h3>
+			<br>
+			<p class="title">{{usuario.Categoria}}</p>
+			<br>
+			<!--<p>Some text that describes me lorem ipsum ipsum lorem.</p>-->
+			<p>{{usuario.email}}</p>
+			<br>
+			<p><button class="button">Contact</button></p>
+		  </div>
+		</div>
+	  </div>
+	</div> 
+</div>
+<script>
+var app=angular.module('holaApp',[]);
+app.controller('cntrl', function($scope,$http){
+
+	$http.get("php/customers_mysql.php").then(function (response) 
+	{
+		$scope.names = response.data.records;
+	})
 
 });
 
 
 </script>
-<div class="parallax"></div>           <!-- donde haya esto se añade un paralax -->
-
 
 <div class="parallax"></div>
-
-
-
-
 
 
   <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
@@ -211,50 +232,36 @@ app.controller('cntrl', function($scope,$http){
 
     <!-- build:js(.) scripts/vendor.js -->
     <!-- bower:js -->
-    <script src="bower_components/jquery/dist/jquery.js"></script>
-    <script src="bower_components/angular/angular.js"></script>
-    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
-    <script src="bower_components/angular-animate/angular-animate.js"></script>
-    <script src="bower_components/angular-aria/angular-aria.js"></script>
-    <script src="bower_components/angular-cookies/angular-cookies.js"></script>
-    <script src="bower_components/angular-messages/angular-messages.js"></script>
-    <script src="bower_components/angular-resource/angular-resource.js"></script>
-    <script src="bower_components/angular-route/angular-route.js"></script>
-    <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
-    <script src="bower_components/angular-touch/angular-touch.js"></script>
+    <script src="../bower_components/jquery/dist/jquery.js"></script>
+    <script src="../bower_components/angular/angular.js"></script>
+	<script src="../bower_components/angular/angular.min.js"></script>
+    <script src="../bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="../bower_components/angular-animate/angular-animate.js"></script>
+    <script src="../bower_components/angular-aria/angular-aria.js"></script>
+    <script src="../bower_components/angular-cookies/angular-cookies.js"></script>
+    <script src="../bower_components/angular-messages/angular-messages.js"></script>
+    <script src="../bower_components/angular-resource/angular-resource.js"></script>
+    <script src="../bower_components/angular-route/angular-route.js"></script>
+    <script src="../bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="../bower_components/angular-touch/angular-touch.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
-        <script src="scripts/app.js"></script>
-        <script src="scripts/controllers/main.js"></script>
-        <script src="scripts/controllers/about.js"></script>
+        <script src="../scripts/app.js"></script>
+        <script src="../scripts/controllers/main.js"></script>
+        <script src="../scripts/controllers/about.js"></script>
         <!-- endbuild -->
         
     <!-- loginPage:js({.tmp,app}) fullscreen-login -->
-    <script src="fullscreen-login/login.html"></script>
-    <script src="fullscreen-login/assets/css/reset.css"></script>
-    <script src="fullscreen-login/assets/css/style.css"></script>
-    <script src="fullscreen-login/assets/css/supersized.css"></script>
-    <script src="fullscreen-login/assets/img/backgrounds/1.jpg"></script>
-    <script src="fullscreen-login/assets/img/backgrounds/2.jpg"></script>
-    <script src="fullscreen-login/assets/img/backgrounds/3.jpg"></script>
-    <script src="fullscreen-login/assets/img/facebook.png"></script>
-    <script src="fullscreen-login/assets/img/progress.gif"></script>
-    <script src="fullscreen-login/assets/img/twitter.png"></script>
-    <script src="fullscreen-login/assets/js/jquery-1.8.2.min.js"></script>
-    <script src="fullscreen-login/assets/js/scripts.js"></script>
-    <script src="fullscreen-login/assets/js/supersized-init.js"></script>
-    <script src="fullscreen-login/assets/js/supersized.3.2.7.min.js"></script>
+    <script src="../fullscreen-login/assets/js/jquery-1.8.2.min.js"></script>
+    <script src="../fullscreen-login/assets/js/scripts.js"></script>
+    <script src="../fullscreen-login/assets/js/supersized-init.js"></script>
+    <script src="../fullscreen-login/assets/js/supersized.3.2.7.min.js"></script>
     <!-- endbuild -->
     
 	<!-- Connector:php({.tmp,app}) php -->
-	<script src="php/customers_mysql.php"></script>
-	<!-- endbuild -->
-	
-	<!-- Parallax:html({.tmp,app}) html -->
-	<script src="views/main.html"></script>
-	<script src="views/about.html"></script>
+	<script src="../php/customers_mysql.php"></script>
 	<!-- endbuild -->
 
 </body>
