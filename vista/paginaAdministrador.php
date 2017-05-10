@@ -96,7 +96,7 @@
 			<p class="title">{{usuario.Categoria}}</p>
 			<br>
 			<div style="margin: 15px 0;">
-				<a class="{{usuario.id}}" href="" onClick="SnackbarInfo();email(this.className)" style="text-decoration: none;font-size: 22px; color: black;">
+				<a class="{{usuario.id}}" href="" onClick="SnackbarInfo();email(this.className);copiarAlPortapapeles('snackbar')" style="text-decoration: none;font-size: 22px; color: black;">
 					<i class="fa fa-envelope"></i>
 				</a>
 				<div id="snackbar"></div>
@@ -125,7 +125,7 @@
 			<p class="title">{{usuario.Categoria}}</p>
 			<br>
 			<div style="margin: 15px 0;">
-				<a class="{{usuario.id}}" href="" onClick="SnackbarInfo();email(this.className)" style="text-decoration: none;font-size: 22px; color: black;">
+				<a class="{{usuario.id}}" href="" onClick="SnackbarInfo();email(this.className);copiarAlPortapapeles('snackbar')" style="text-decoration: none;font-size: 22px; color: black;">
 				<i class="fa fa-envelope"></i></a>
 				
 			</div>
@@ -157,8 +157,7 @@ function SnackbarInfo() {
     // After 3 seconds, remove the show class from DIV
     setTimeout(function(){ x.className = x.className.replace("show", ""); }, 2000);
 }
-</script>
-<script>
+
 	function email (a){
 		var x = "Se ha copiado al portapapeles: ";
 		var q = a;
@@ -176,9 +175,24 @@ function SnackbarInfo() {
 			x = x+b;
     		document.getElementById("snackbar").innerHTML = x;
 		  }})
-		
-		
 	}
+	</script>
+	<script>	
+	 //Inicio del boton de copia
+        var playButton = $('#snackbar');  // Se obtiene el id del boton clicable
+    playButton.click(function(){    // Aqui se pone a escucha el evento click para el boton antes definido
+            copyToClipboard();          // Esto llama a la funcion copyToClipboard() (Está mas abajo)
+    });
+        //fin del boton de copia
+        //Funcion copytoClipboard
+    function copyToClipboard() {
+        $("body").append("<input type='text' id='temp'>"); // Acá se crea un input dinamicamente con un id para luego asignarle un valor sombreado
+        $("#temp").val("EDITAESTO creado por GAMMAFP").select(); // Acá se obtiene el id del boton que hemos creado antes y se le agrega un valor y luego se le sombrea con select(). Para agregar lo que se quiere copiar editas val("EDITAESTOAQUÍ")
+        document.execCommand("copy"); // document.execCommand("copy") manda a copiar el texto seleccionado en el documento
+        $("#temp").remove();
+
+    }
+}
 	
 </script>
 
